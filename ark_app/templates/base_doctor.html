@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<!-- Mirrored from doccure-html.dreamguystech.com/dental/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 22 Nov 2021 11:40:55 GMT -->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Ark-Medical</title>
+
+    <link type="image/x-icon" href="{% static 'assets/img/favicon.png' %}" rel="icon">
+    <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+    <!--[if lt IE 9]>
+			<script src="{% static 'assets/js/html5shiv.min.js"></script>
+			<script src="{% static 'assets/js/respond.min.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+    <div class="main-wrapper">
+
+        <header class="header home">
+
+            <nav class="navbar navbar-expand-lg header-nav">
+                <div class="navbar-header">
+                    <a id="mobile_btn" href="javascript:void(0);">
+                        <span class="bar-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </a>
+                    <a href="/" class="navbar-brand logo">
+                        <img src="{% static 'assets/img/logo.png' %}" class="img-fluid" alt="Logo">
+                    </a>
+                </div>
+                <div class="main-menu-wrapper">
+                    <div class="menu-header">
+                        <a href="/" class="menu-logo">
+                            <img src="{% static 'assets/img/logo.png' %}" class="img-fluid" alt="Logo">
+                        </a>
+                        <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </div>
+                    <ul class="main-nav">
+                        <li class="active">
+                            <a href="{% url 'doctor_profile_settings' %}">Home</a>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="#">Doctors <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="{% url 'doctor_dashboard' %}">Doctor Dashboard</a></li>
+                                <li><a href="{% url 'appointments' %}">Appointments</a></li>
+
+                                <li><a href="{% url 'patient_list' %}">Patients List</a></li>
+                                <li><a href="{% url 'patient_profile' %}">Patients Profile</a></li>
+                                <li><a href="{% url 'invoices' %}">Invoices</a></li>
+                                <li><a href="{% url 'doctor_profile_settings' %}">Profile Settings</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="#">Patients <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+
+                                <li><a href="{% url 'search' %}">Search Doctor</a></li>
+
+                                <li><a href="{% url 'booking' %}">Booking</a></li>
+                                <li><a href="{% url 'checkout' %}">Checkout</a></li>
+                                <li><a href="{% url 'booking_success' %}">Booking Success</a></li>
+
+
+
+                                <li><a href="{% url 'profile_settings' %}">Profile Settings</a></li>
+                                <li><a href="{% url 'change_password' %}">Change Password</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="#">Pages <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="voice-call.html">Voice Call</a></li>
+                                <li><a href="video-call.html">Video Call</a></li>
+                                <li><a href="search.html">Search Doctors</a></li>
+                                <li><a href="calendar.html">Calendar</a></li>
+                                <li><a href="components.html">Components</a></li>
+                                <li class="has-submenu">
+                                    <a href="invoices.html">Invoices</a>
+                                    <ul class="submenu">
+                                        <li><a href="invoices.html">Invoices</a></li>
+                                        <li><a href="invoice-view.html">Invoice View</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="blank-page.html">Starter Page</a></li>
+                                <li><a href="about-us.html">About Us</a></li>
+                                <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
+                        </li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="register.html">Register</a></li>
+                        <li><a href="forgot-password.html">Forgot Password</a></li>
+                    </ul>
+                    </li>
+
+
+                    </ul>
+                </div>
+                <ul class="nav header-navbar-rht">
+                    {% if request.session.email %}
+                    <li class="nav-item">
+                        <a class="nav-link header-login" href="{% url 'doctor_logout' %}">Log Out</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link header-login" href="{% url 'doctor_login' %}">login / Signup </a>
+                    </li>
+                    {% endif %} 
+                </ul>
+            </nav>
+        </header>
+
+        {% block main_content %}
+        {% endblock %}
+
+        <footer class="footer mt-5">
+
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12 text-center">
+                            <a href="index-2.html" class="footer-logo logo">
+                                <img src="{% static 'assets/img/logo.png' %}" class="img-fluid" alt="Logo">
+                            </a>
+                        </div>
+                        <div class="social-icon media-btn mt-3 mb-2">
+
+                        </div>
+                        <div class="col-12 justify-content-center d-flex mt-4 mb-2">
+                            <div class="search-holder">
+                                <input type="text" name="search" placeholder="Your Email" />
+                                <button class="btn btn-yellow">Subscribe</button>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-4 text-center">
+                            <ul class="policy-menu text-center">
+                                
+                                <li><a href="{% url 'doctor_login' %}">Doctor's Login Only</a></li>
+                                
+                                <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="footer-bottom">
+                <div class="container-fluid">
+
+                    <div class="copyright">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12 text-center">
+                                <div class="copyright-text">
+                                    <p class="mb-0">&copy; 2020 made by <a href=# class="text-yellow"> Arth Ranpariya.</a> All Rights
+                                        Reserved.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </footer>
+
+    </div>
+
+
+    <script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+    <script src="{% static 'assets/js/slick.js' %}"></script>
+
+    <script src="{% static 'assets/js/script.js' %}"></script>
+    <script src="{% static 'assets/plugins/theia-sticky-sidebar/ResizeSensor.js' %}"></script>
+	<script src="{% static 'assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js' %}"></script>
+
+	<script src="{% static 'assets/js/circle-progress.min.js' %}"></script>
+
+    {% block script %}
+    {% endblock %}
+
+
+    
+</body>
+
+<!-- Mirrored from doccure-html.dreamguystech.com/dental/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 22 Nov 2021 11:41:12 GMT -->
+
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<!-- Mirrored from doccure-html.dreamguystech.com/dental/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 22 Nov 2021 11:40:55 GMT -->
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<title>Ark-Medical</title>
+
+	<link type="image/x-icon" href="{% static 'assets/img/favicon.png' %}" rel="icon">
+	<link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+	<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+	<!--[if lt IE 9]>
+			<script src="{% static 'assets/js/html5shiv.min.js"></script>
+			<script src="{% static 'assets/js/respond.min.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+	<div class="main-wrapper">
+		<header class="header home">
+
+            <nav class="navbar navbar-expand-lg header-nav">
+                <div class="navbar-header">
+                    <a id="mobile_btn" href="javascript:void(0);">
+                        <span class="bar-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </a>
+                    <a href="/" class="navbar-brand logo">
+                        <img src="{% static 'assets/img/logo.png' %}" class="img-fluid" alt="Logo">
+                    </a>
+                </div>
+                <div class="main-menu-wrapper">
+                    <div class="menu-header">
+                        <a href="/" class="menu-logo">
+                            <img src="{% static 'assets/img/logo.png' %}" class="img-fluid" alt="Logo">
+                        </a>
+                        <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </div>
+                    
+                </div>
+                
+            </nav>
+        </header>
+
+		<div class="content">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-8 offset-md-2">
+
+						{% if msg %}
+						<p style="color: red;">{{msg}}</p>
+						{% endif %}
+
+						<div class="account-content">
+							<div class="row align-items-center justify-content-center">
+								<div class="col-md-7 col-lg-6 login-left">
+									<img src="{% static 'assets/img/login-banner.png' %}" class="img-fluid"
+										alt="Login Banner">
+								</div>
+								<div class="col-md-12 col-lg-6 login-right">
+									<div class="login-header">
+										<h3>OTP</h3>
+										<p class="small text-muted">Enter your One Time Password here</p>
+									</div>
+
+									<form method="POST" action="{% url 'verify_otp' %}">
+										{% csrf_token %}
+										<div class="form-group form-focus">
+											<input type="password" name="otp" class="form-control floating">
+											<label class="focus-label">OTP</label>
+										</div>
+
+										<button class="btn btn-primary w-100 btn-lg login-btn mt-3" type="submit">Verify
+											OTP</button>
+									</form>
+
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer class="footer mt-5">
+
+			<div class="footer-top">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-12 text-center">
+							<a href="index-2.html" class="footer-logo logo">
+								<img src="{% static 'assets/img/logo.png' %}" class="img-fluid" alt="Logo">
+							</a>
+						</div>
+						<div class="social-icon media-btn mt-3 mb-2">
+
+						</div>
+						<div class="col-12 justify-content-center d-flex mt-4 mb-2">
+							<div class="search-holder">
+								<input type="text" name="search" placeholder="Your Email" />
+								<button class="btn btn-yellow">Subscribe</button>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+
+
+			<div class="footer-bottom">
+				<div class="container-fluid">
+
+					<div class="copyright">
+						<div class="row">
+							<div class="col-md-12 col-lg-12 text-center">
+								<div class="copyright-text">
+									<p class="mb-0">&copy; 2020 made by <a href=# class="text-yellow"> Arth
+											Ranpariya.</a> All Rights
+										Reserved.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</footer>
+	</div>
+
+
+	<script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+
+	<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+	<script src="{% static 'assets/js/slick.js' %}"></script>
+
+	<script src="{% static 'assets/js/script.js' %}"></script>
+	<script src="{% static 'assets/plugins/theia-sticky-sidebar/ResizeSensor.js' %}"></script>
+	<script src="{% static 'assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js' %}"></script>
+
+	<script src="{% static 'assets/js/circle-progress.min.js' %}"></script>
+
+</body>
+
+<!-- Mirrored from doccure-html.dreamguystech.com/dental/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 22 Nov 2021 11:41:12 GMT -->
+
+</html>

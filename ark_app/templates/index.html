@@ -1,0 +1,266 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main_content %}
+		<section class="section section-search">
+			<div class="container">
+				<div class="banner-wrapper">
+					<div class="banner-header">
+						<h6>We work to take care of your smile</h6>
+						<h1>Great Smile For Healthy Lifestyle!</h1>
+						<!-- <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+							laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+							architecto beatae vitae dicta sunt explicabo</p> -->
+						<a href="#" class="btn-yellow">Make an Appointment</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="feature-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 col-md-6">
+						<div class="left">
+							<h6>Connecting with us</h6>
+							<h2>We Are Providing A Very Good Care and Safety!</h2>
+						</div>
+					</div>
+					<div class="col-12 col-md-6">
+						<div class="right">
+							<!-- <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium laudantium,
+								totam rem aperiam, eaque ipsa quae ab illo inve ntore veritatis et quasi architecto
+								beatae vitae dicta sunt explicabo, sed ut perspiciatis unde omnis iste natus error.</p>
+							<a href="#" class="btn-yellow">Make an Appointment</a> -->
+						</div>
+					</div>
+				</div>
+				<div class="row feature-column">
+					<div class="feature-box">
+						<div class="inner-feature-box text-center">
+							<div class="feature-icon">
+								<img src="{% static 'assets/img/feature1.png' %}" alt="">
+							</div>
+							<h4>Review Your <br>Medical Records</h4>
+							
+							<div class="feature-btn">
+								<a href="#"><i class="fas fa-chevron-right"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="feature-box">
+						<div class="inner-feature-box text-center">
+							<div class="feature-icon">
+								<img src="{% static 'assets/img/feature2.png' %}" alt="">
+							</div>
+							<h4>Monthly Checkups <br>Available</h4>
+							
+							<div class="feature-btn">
+								<a href="#"><i class="fas fa-chevron-right"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="feature-box">
+						<div class="inner-feature-box text-center">
+							<div class="feature-icon">
+								<img src="{% static 'assets/img/feature3.png' %}" alt="">
+							</div>
+							<h4>Check Blood<br>Pressures</h4>
+							
+							<div class="feature-btn">
+								<a href="#"><i class="fas fa-chevron-right"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="feature-box">
+						<div class="inner-feature-box text-center">
+							<div class="feature-icon">
+								<img src="{% static 'assets/img/feature4.png' %}" alt="">
+							</div>
+							<h4>Well Qualified<br>Doctors</h4>
+							
+							<div class="feature-btn">
+								<a href="#"><i class="fas fa-chevron-right"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="feature-box">
+						<div class="inner-feature-box text-center">
+							<div class="feature-icon">
+								<img src="{% static 'assets/img/feature5.png' %}" alt="">
+							</div>
+							<h4>24/7 Emergency<br>Helps</h4>
+							
+							<div class="feature-btn">
+								<a href="#"><i class="fas fa-chevron-right"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<section class="location-col">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 col-md-6">
+						<div class="left">
+							<div class="location-box text-center">
+								<h4>Our Health Care Programs</h4>
+								<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem a santium doloremque
+									laudantium, totam rem aperiam.</p>
+								<div class="location-btn">
+									<a href="#"><i class="fas fa-chevron-right"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-md-6">
+						<div class="right">
+							<div class="location-box text-center">
+								<h4>Find Our Location</h4>
+								<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem a santium doloremque
+									laudantium, totam rem aperiam.</p>
+								<div class="location-btn">
+									<a href="#"><i class="fas fa-chevron-right"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<section class="doctors-col">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="doctors-title text-center">
+						<h6>MEET OUR DOCTORS</h6>
+						<h2>Our Doctors</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="doctor-slider slider">
+							{% for i in doctor %}
+							<div class="profile-widget">
+								<div class="doc-img">
+									<a href="{% url 'search' %}">
+										<img class="img-fluid" alt="User Image" src="{% static 'assets/img/doctors/doctor-05.jpg' %}">
+									</a>
+								</div>
+								<div class="pro-content">
+									<h3 class="title">
+										<a href="{% url 'search' %}">{{i.name}}</a>
+									</h3>
+									<p class="speciality">{{i.degree}}</p>
+									
+									<ul class="available-info">
+										<li>
+											<i class="fas fa-map-marker-alt"></i> {{i.address}}
+										</li>
+										
+										<li>
+											<i class="fas fa-phone"></i> {{i.email}}
+										</li>
+									</ul>
+								</div>
+								<div class="pro-footer">
+									<ul class="policy-menu text-center">
+										<li><a href="{% url 'search' %}">View Profile</a></li>
+										<li><a href="{% url 'search' %}"> Book Now</a></li>
+									</ul>
+								</div>
+							</div>
+							{% endfor %}
+
+
+						</div>
+						<div class="col-12 col-md-12 text-center pt-4">
+							<a href="{% url 'search' %}" class="view-all">View All</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		{% if request.session.email %}
+		<section class="appoinment-section">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-12 col-lg-12">
+						<div class="section-header text-center">
+							<h6>Appointment</h6>
+							<h2 class="text-white">Book An Appointment</h2>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+
+		<div class="appmt-form location-col">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-12 col-lg-12">
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-12 col-md-6 col-lg-4">
+										<div class="form-group">
+											<label>Name</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-12 col-md-6 col-lg-4">
+										<div class="form-group">
+											<label>Email</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-12 col-md-6 col-lg-4">
+										<div class="form-group">
+											<label>Mobile Number</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-12 col-md-6 col-lg-4">
+										<div class="form-group">
+											<label>Doctor Name</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-12 col-md-6 col-lg-4">
+										<div class="form-group mb-0">
+											<label>Date</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-12 col-md-6 col-lg-4">
+										<div class="form-group">
+											<label>Time</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-12 col-md-12 text-center">
+										<a href="#" class="btn-yellow">Make an Appointment</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+{% endblock %}
+
+
+		
+
+
+		

@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main_content %}
+
+<div class="breadcrumb-bar mt-3">
+	<div class="container-fluid">
+		<div class="row align-items-center">
+			<div class="col-md-8 col-12">
+
+				<h2 class="breadcrumb-title">{{count}} : Doctors In Gujarat</h2>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			
+			<div class="col-md-12">
+				{% for i in doctor %}
+				<div class="card">
+					<div class="card-body">
+						<div class="doctor-widget">
+							<div class="doc-info-left">
+								<div class="doctor-img">
+									<a href="#">
+										<img src="{% static 'assets/img/doctors/doctor-thumb-02.jpg' %}" class="img-fluid"
+											alt="User Image">
+									</a>
+								</div>
+								<div class="doc-info-cont">
+									<h4 class="doc-name"><a href="#"></a>{{i.name}}</h4>
+									<p class="doc-speciality">{{i.degree}}</p>
+									<h5 class="doc-department"><img src="{% static 'assets/img/specialities/specialities-05.png' %}"
+											class="img-fluid" alt="Speciality">Dentist</h5>
+									
+									<div class="clinic-details">
+										<p class="doc-location"><i class="fas fa-map-marker-alt"></i> {{i.address}}</p>
+										<ul class="clinic-gallery">
+											<li>
+												<a href="{% static 'assets/img/features/feature-01.jpg' %}" data-fancybox="gallery">
+													<img src="{% static 'assets/img/features/feature-01.jpg' %}" alt="Feature">
+												</a>
+											</li>
+											<li>
+												<a href="{% static 'assets/img/features/feature-02.jpg' %}" data-fancybox="gallery">
+													<img src="{% static 'assets/img/features/feature-02.jpg' %}" alt="Feature">
+												</a>
+											</li>
+											<li>
+												<a href="{% static 'assets/img/features/feature-03.jpg' %}" data-fancybox="gallery">
+													<img src="{% static 'assets/img/features/feature-03.jpg' %}" alt="Feature">
+												</a>
+											</li>
+											<li>
+												<a href="{% static 'assets/img/features/feature-04.jpg' %}" data-fancybox="gallery">
+													<img src="{% static 'assets/img/features/feature-04.jpg' %}" alt="Feature">
+												</a>
+											</li>
+										</ul>
+									</div>
+									<div class="clinic-services">
+										<span>Dental Fillings</span>
+										<span> Whitneing</span>
+									</div>
+								</div>
+							</div>
+							<div class="doc-info-right">
+								<div class="clini-infos">
+									<ul>
+										<li><i class="fas fa-map-marker-alt"></i> {{i.address}}</li>
+										<li><i class="fas fa-phone"></i> {{i.mobile}} <i
+												class="fas fa-info-circle" data-bs-toggle="tooltip"
+												title="Lorem Ipsum"></i> </li>
+									</ul>
+								</div>
+								<div class="clinic-booking">
+									<a class="view-pro-btn" href="#">View Profile</a>
+									<a class="apt-btn" href="#">Book Appointment</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+				
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main_content %}
+
+
+		<div class="breadcrumb-bar">
+			<div class="container-fluid">
+				<div class="row align-items-center">
+					<div class="col-md-12 col-12">
+						
+						<h2 class="breadcrumb-title">Booking</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="content success-page-cont">
+			<div class="container-fluid">
+				<div class="row justify-content-center">
+					<div class="col-lg-6">
+
+						<div class="card success-card">
+							<div class="card-body">
+								<div class="success-cont">
+									<i class="fas fa-check"></i>
+									<h3>Appointment booked Successfully!</h3>
+									<p>Appointment booked with <strong>Dr. Loren Bivens</strong><br> on <strong>12 Nov
+											2019 5:00PM to 6:00PM</strong></p>
+									<a href="{% url 'invoice_view' %}" class="btn btn-primary view-inv-btn">View Invoice</a>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+{% endblock %}
