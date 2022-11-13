@@ -3,6 +3,7 @@ from .models import *
 import random
 from django.core.mail import send_mail
 from django.conf import settings
+import datetime 
 
 # Create your views here.
 
@@ -193,7 +194,10 @@ def doctor_dashboard(request):
 def doc_profile_update(request):
     try:
         doctor = Doctor.objects.get(email=request.session['email'])
+        a = request.FILES['image']
+        print(a,"image print here \n\n\n")
         doctor.name = request.POST['name']
+        doctor.image = a
         doctor.address = request.POST['address']
         doctor.city = request.POST['city']
         doctor.state = request.POST['state']
@@ -203,14 +207,14 @@ def doc_profile_update(request):
         doctor.gender = request.POST['gender']
         doctor.dob = request.POST['dob']
         doctor.description = request.POST['description']
-        doctor.dob = doctor.dob.strftime("%Y-%m-%d")
         doctor.save()
         msg = 'Profile Updated SuccessFully'
         print(msg)
+        
         return redirect(doctor_profile_settings)
     except Exception as e:
         msg = 'Something Went Wrong! Please Try Again Later..'
-        print(e)
+        print(f'\n\n\n\n{e}\n\n\n')
         return render(request,'doctor_profile_settings.html',{'msg':msg,'doctor':doctor})
 
 def doctor_profile_settings(request):

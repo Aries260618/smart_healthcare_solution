@@ -28,15 +28,14 @@
 							<div class="doc-info-left">
 								<div class="doctor-img">
 									<a href="#">
-										<img src="{% static 'assets/img/doctors/doctor-thumb-02.jpg' %}" class="img-fluid"
-											alt="User Image">
+										<img src="{{i.image.url}}" class="img-fluid"
+											alt="User Image" style="height: 200px;">
 									</a>
 								</div>
 								<div class="doc-info-cont">
 									<h4 class="doc-name"><a href="#"></a>{{i.name}}</h4>
 									<p class="doc-speciality">{{i.degree}}</p>
-									<h5 class="doc-department"><img src="{% static 'assets/img/specialities/specialities-05.png' %}"
-											class="img-fluid" alt="Speciality">Dentist</h5>
+									
 									
 									<div class="clinic-details">
 										<p class="doc-location"><i class="fas fa-map-marker-alt"></i> {{i.address}}</p>

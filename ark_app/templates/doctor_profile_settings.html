@@ -24,12 +24,12 @@
 							<div class="widget-profile pro-widget-content">
 								<div class="profile-info-widget">
 									<a href="#" class="booking-doc-img">
-										<img src="{% static 'assets/img/doctors/doctor-thumb-02.jpg' %}" alt="User Image">
+										<img src="{{doctor.image.url}}" alt="User Image">
 									</a>
 									<div class="profile-det-info">
-										<h3>Dr. Loren Bivens</h3>
+										<h3>{{doctor.name}}</h3>
 										<div class="patient-details">
-											<h5 class="mb-0">BDS, MDS - Oral & Maxillofacial Surgery</h5>
+											<h5 class="mb-0">{{doctor.degree}}</h5>
 										</div>
 									</div>
 								</div>
@@ -111,7 +111,7 @@
 
 					</div>
 					<div class="col-md-7 col-lg-8 col-xl-9">
-						<form method="post" action="{% url 'doc_profile_update' %}">
+						<form method="post" action="{% url 'doc_profile_update' %}" enctype="multipart/form-data">
 							{% csrf_token %}
 
 						<div class="card">
@@ -122,12 +122,12 @@
 										<div class="form-group">
 											<div class="change-avatar">
 												<div class="profile-img">
-													<img src="{% static 'assets/img/doctors/doctor-thumb-02.jpg' %}" alt="User Image">
+													<img src="{{doctor.image.url}}" alt="User Image">
 												</div>
 												<div class="upload-img">
 													<div class="change-photo-btn">
 														<span><i class="fa fa-upload"></i> Upload Photo</span>
-														<input type="file" class="upload">
+														<input type="file" class="upload" name="image">
 													</div>
 													<small class="form-text text-muted">Allowed JPG, GIF or PNG. Max
 														size of 2MB</small>
