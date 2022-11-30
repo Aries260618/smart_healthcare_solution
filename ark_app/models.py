@@ -18,7 +18,7 @@ class Degree(models.Model):
         return self.Name
 
 class Doctor(models.Model):
-    image = models.ImageField(upload_to = 'doctors/images/')
+    image = models.ImageField(upload_to = 'doctors/images/',default="user.jpg")
     name = models.CharField(max_length=20)
     email = models.EmailField()
     gender = models.CharField(max_length=15,choices=gender_choice)
@@ -40,7 +40,7 @@ class Doctor(models.Model):
         return self.name 
 
 class Patient(models.Model):
-    image = models.ImageField(upload_to = 'patients/images/')
+    image = models.ImageField(upload_to = 'patients/images/',default="user.jpg")
     name = models.CharField(max_length=20)
     email = models.EmailField()
     address = models.CharField(max_length=255)
