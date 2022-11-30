@@ -3,7 +3,7 @@ from .models import *
 import random
 from django.core.mail import send_mail
 from django.conf import settings
-import datetime 
+
 
 # Create your views here.
 
@@ -59,7 +59,10 @@ def doc_verify_otp(request):
 
 def index(request):
     doctor = Doctor.objects.all()
-    return render(request, "index.html",{'doctor':doctor})
+    patient = None
+    if 'email' in request.session:
+        patient = Patient.objects.get(email=request.session['email'])
+    return render(request, "index.html",{'doctor':doctor,'patient':patient})
 
 def doctor_login(request):
     if request.method == "POST":
@@ -189,7 +192,9 @@ def register(request):
         return render(request, "register.html")
 
 def doctor_dashboard(request):
-    return render(request, "doctor_dashboard.html")
+    doctor = Doctor.objects.get(email=request.session['email'])
+    doctors = Doctor.objects.all()
+    return render(request, "doctor_dashboard.html",{'doctor':doctor,'doctors':doctors})
 
 def doc_profile_update(request):
     try:
@@ -205,7 +210,6 @@ def doc_profile_update(request):
         doctor.pin = request.POST['pin']
         doctor.mobile = request.POST['mobile']
         doctor.gender = request.POST['gender']
-        doctor.dob = request.POST['dob']
         doctor.description = request.POST['description']
         doctor.save()
         msg = 'Profile Updated SuccessFully'
@@ -229,10 +233,21 @@ def doctor_profile_settings(request):
     return render(request, "doctor_profile_settings.html",{'doctor':doctor,'gender':gender})
 
 def appointments(request):
-    return render(request, "appointments.html")
+    doctor = Doctor.objects.get(email=request.session['email'])
+    appointment = Appointment.objects.filter(doctor=doctor).all()
+    return render(request, "appointments.html",{'appointment':appointment,'doctor':doctor})
+
+def approval_apointment(request,pk):
+    appointment = Appointment.objects.get(pk=pk)
+    appointment.is_book = True
+    appointment.date = timezone.now()
+    appointment.save()
+    return redirect(appointments)
 
 def patient_list(request):
-    return render(request, "patient_list.html")
+    doctor = Doctor.objects.get(email=request.session['email'])
+    appointment = Appointment.objects.filter(doctor=doctor).all()
+    return render(request, "patient_list.html",{'doctor':doctor,'appointment':appointment})
 
 def patient_profile(request):
     return render(request, "patient_profile.html")
@@ -278,9 +293,7 @@ def contact_us(request):
 
 def logout(request):
     if 'email' in request.session:
-        master = Patient.objects.get(email = request.session['email'])
-        master.IsActive = False
-        master.save()
+        
         del request.session['email']
     return redirect(index)
 
@@ -295,6 +308,25 @@ def doctor_logout(request):
 
 def otp_page(request):
     return render(request, "otp.html")
+
+def book_appointment(request):
+    try:
+        patient = Patient.objects.get(email=request.session['email'])
+        doctor = Doctor.objects.get(id=int(request.POST['doctor']))
+        app = Appointment.objects.create(
+            doctor = doctor,
+            patient = patient,
+            name = request.POST['name'],
+            email = request.session['email'],
+            mobile = request.POST['mobile'],
+            description = request.POST['description'],
+        )
+        app.save()
+        return redirect(booking_success)
+    except Exception as E:
+        print(f'\n\n\n{E}\n\n\n')
+        return redirect(index)
+        
 
 def doc_otp(request):
     return render(request,'doc_otp.html')

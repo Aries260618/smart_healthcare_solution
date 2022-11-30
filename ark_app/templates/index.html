@@ -11,7 +11,9 @@
 						<!-- <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
 							laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
 							architecto beatae vitae dicta sunt explicabo</p> -->
-						<a href="#" class="btn-yellow">Make an Appointment</a>
+						{% if request.session.email %}
+						<a href="#booking" class="btn-yellow">Make an Appointment</a>
+						{% endif %}
 					</div>
 				</div>
 			</div>
@@ -43,9 +45,7 @@
 							</div>
 							<h4>Review Your <br>Medical Records</h4>
 							
-							<div class="feature-btn">
-								<a href="#"><i class="fas fa-chevron-right"></i></a>
-							</div>
+							
 						</div>
 					</div>
 					<div class="feature-box">
@@ -55,9 +55,7 @@
 							</div>
 							<h4>Monthly Checkups <br>Available</h4>
 							
-							<div class="feature-btn">
-								<a href="#"><i class="fas fa-chevron-right"></i></a>
-							</div>
+							
 						</div>
 					</div>
 					<div class="feature-box">
@@ -67,9 +65,7 @@
 							</div>
 							<h4>Check Blood<br>Pressures</h4>
 							
-							<div class="feature-btn">
-								<a href="#"><i class="fas fa-chevron-right"></i></a>
-							</div>
+							
 						</div>
 					</div>
 					<div class="feature-box">
@@ -79,9 +75,7 @@
 							</div>
 							<h4>Well Qualified<br>Doctors</h4>
 							
-							<div class="feature-btn">
-								<a href="#"><i class="fas fa-chevron-right"></i></a>
-							</div>
+							
 						</div>
 					</div>
 					<div class="feature-box">
@@ -91,9 +85,7 @@
 							</div>
 							<h4>24/7 Emergency<br>Helps</h4>
 							
-							<div class="feature-btn">
-								<a href="#"><i class="fas fa-chevron-right"></i></a>
-							</div>
+							
 						</div>
 					</div>
 				</div>
@@ -104,30 +96,16 @@
 		<section class="location-col">
 			<div class="container">
 				<div class="row">
-					<div class="col-12 col-md-6">
+					<div class="col-12">
 						<div class="left">
 							<div class="location-box text-center">
-								<h4>Our Health Care Programs</h4>
-								<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem a santium doloremque
-									laudantium, totam rem aperiam.</p>
-								<div class="location-btn">
-									<a href="#"><i class="fas fa-chevron-right"></i></a>
-								</div>
+								<h4>Our Health Care Solution</h4>
+								<p>We are Provide a Best Service in your city. You have any problem Just Book our doctor's, and Get Solution Fast</p>
+								
 							</div>
 						</div>
 					</div>
-					<div class="col-12 col-md-6">
-						<div class="right">
-							<div class="location-box text-center">
-								<h4>Find Our Location</h4>
-								<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem a santium doloremque
-									laudantium, totam rem aperiam.</p>
-								<div class="location-btn">
-									<a href="#"><i class="fas fa-chevron-right"></i></a>
-								</div>
-							</div>
-						</div>
-					</div>
+					
 				</div>
 			</div>
 		</section>
@@ -202,6 +180,8 @@
 		</section>
 		
 
+		<form id="booking" action="{% url 'book_appointment' %}" method="post">
+		{% csrf_token %}
 		<div class="appmt-form location-col">
 			<div class="container">
 				<div class="row justify-content-center">
@@ -212,41 +192,42 @@
 									<div class="col-12 col-md-6 col-lg-4">
 										<div class="form-group">
 											<label>Name</label>
-											<input type="text" class="form-control">
+											<input type="text" class="form-control" name="name" required>
 										</div>
 									</div>
 									<div class="col-12 col-md-6 col-lg-4">
 										<div class="form-group">
 											<label>Email</label>
-											<input type="text" class="form-control">
+											<input type="text" class="form-control" value="{{patient.email}}" name="email" readonly>
 										</div>
 									</div>
 									<div class="col-12 col-md-6 col-lg-4">
 										<div class="form-group">
 											<label>Mobile Number</label>
-											<input type="text" class="form-control">
+											<input type="text" class="form-control" name="mobile" required>
 										</div>
 									</div>
 									<div class="col-12 col-md-6 col-lg-4">
 										<div class="form-group">
-											<label>Doctor Name</label>
-											<input type="text" class="form-control">
+											<label>Gender</label>
+											<select class="gender form-select form-control" name="doctor" value="{{i.name}}" readonly>
+												<option>Select</option>
+												{% for i in doctor %}
+												<option class="" value="{{i.pk}}">{{i.name}}</option readonly>
+												{% endfor %}
+											</select>
 										</div>
 									</div>
-									<div class="col-12 col-md-6 col-lg-4">
+									
+									<div class="col-12 col-md-8">
 										<div class="form-group mb-0">
-											<label>Date</label>
-											<input type="text" class="form-control">
+											<label>Health Issue</label>
+											<input type="text" class="form-control" name="description" required>
 										</div>
 									</div>
-									<div class="col-12 col-md-6 col-lg-4">
-										<div class="form-group">
-											<label>Time</label>
-											<input type="text" class="form-control">
-										</div>
-									</div>
+									
 									<div class="col-12 col-md-12 text-center">
-										<a href="#" class="btn-yellow">Make an Appointment</a>
+										<button type="submit" class="btn-yellow">Apply To Appointment</button>
 									</div>
 								</div>
 							</div>
@@ -255,6 +236,7 @@
 				</div>
 			</div>
 		</div>
+		</form>
 		{% endif %}
 
 {% endblock %}

@@ -57,58 +57,18 @@
                         <li class="active">
                             <a href="/">Home</a>
                         </li>
+                        <li><a href="{% url 'search' %}">Search Doctor</a></li>
                         {% if request.session.email %}
                         <li class="has-submenu">
-                            <a href="#">Doctors <i class="fas fa-chevron-down"></i></a>
-                            <ul class="submenu">
-                                <li><a href="{% url 'doctor_dashboard' %}">Doctor Dashboard</a></li>
-                                <li><a href="{% url 'appointments' %}">Appointments</a></li>
-
-                                <li><a href="{% url 'patient_list' %}">Patients List</a></li>
-                                <li><a href="{% url 'patient_profile' %}">Patients Profile</a></li>
-                                <li><a href="{% url 'invoices' %}">Invoices</a></li>
-                                <li><a href="{% url 'doctor_profile_settings' %}">Profile Settings</a></li>
-
-                            </ul>
+                            <a href="{% url 'booking_success' %}">Appointment</a>
                         </li>
                         <li class="has-submenu">
-                            <a href="#">Patients <i class="fas fa-chevron-down"></i></a>
+                            <a href="#">Profile <i class="fas fa-chevron-down"></i></a>
                             <ul class="submenu">
-
-                                <li><a href="{% url 'search' %}">Search Doctor</a></li>
-
-                                <li><a href="{% url 'booking' %}">Booking</a></li>
-                                <li><a href="{% url 'checkout' %}">Checkout</a></li>
-                                <li><a href="{% url 'booking_success' %}">Booking Success</a></li>
-
-
-
                                 <li><a href="{% url 'profile_settings' %}">Profile Settings</a></li>
                                 <li><a href="{% url 'change_password' %}">Change Password</a></li>
                             </ul>
                         </li>
-                        <li class="has-submenu">
-                            <a href="#">Pages <i class="fas fa-chevron-down"></i></a>
-                            <ul class="submenu">
-                                <li><a href="voice-call.html">Voice Call</a></li>
-                                <li><a href="video-call.html">Video Call</a></li>
-                                <li><a href="search.html">Search Doctors</a></li>
-                                <li><a href="calendar.html">Calendar</a></li>
-                                <li><a href="components.html">Components</a></li>
-                                <li class="has-submenu">
-                                    <a href="invoices.html">Invoices</a>
-                                    <ul class="submenu">
-                                        <li><a href="invoices.html">Invoices</a></li>
-                                        <li><a href="invoice-view.html">Invoice View</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="blank-page.html">Starter Page</a></li>
-                                <li><a href="about-us.html">About Us</a></li>
-                                <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
-                        </li>
-                        <li><a href="login.html">Login</a></li>
-                        <li><a href="register.html">Register</a></li>
-                        <li><a href="forgot-password.html">Forgot Password</a></li>
                         {% endif %}
                     </ul>
                     </li>

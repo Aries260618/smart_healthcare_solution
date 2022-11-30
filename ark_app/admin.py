@@ -9,3 +9,4 @@ admin.site.site_header = admin.site.site_title = "Ark Medical"
 admin.site.register(Degree)
 admin.site.register(Doctor)
 admin.site.register(Patient)
+admin.site.register(Appointment)

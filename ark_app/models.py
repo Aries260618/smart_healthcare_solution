@@ -49,3 +49,16 @@ class Patient(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Appointment(models.Model):
+    patient = models.ForeignKey(Patient,on_delete=models.CASCADE)
+    doctor = models.ForeignKey(Doctor,on_delete=models.CASCADE)
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+    mobile = models.CharField(max_length=10)
+    description = models.CharField(max_length=200)
+    date = models.DateField(auto_created=True,default=timezone.now)
+    is_book = models.BooleanField(default=False)
+    
+    def __str__(self):
+        return self.name
